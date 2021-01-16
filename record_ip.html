@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>我的接入IP资源</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- 复制文本赋值区域 -->
+    <textarea class="copy-area"></textarea>
+    <div class="box-container">
+        <!-- 头部 -->
+        <header>
+            <div class="header-wrap">
+                <a href="javascript:;" class="back-btn"><span class="back-head iconfont icon-zuojiantou-copy"></span>返回</a>
+                <h3>网站备案</h3>
+                <a href="javascript:;" class="attention-btn">注意事项</a>
+            </div>
+        </header>
+       <!-- 主体 -->
+       <main>
+           <div class="main-wrap">
+                <div class="record-input-box no-empty">
+                    <span class="cross-btn"></span>
+                    <input class="record-search" type="text" placeholder="请输入IP地址" />
+                    <button class="cancel-btn">取消</button>
+                    <button class="update-btn">更新资源</button>
+                </div>
+                <!-- <div class="record-input-box">
+                    <input class="record-search" type="text" placeholder="IP地址" />
+                    <button class="cancel-btn">取消</button>
+                    <button class="update-btn">更新资源</button>
+                </div> -->
+               <!-- 有内容 -->
+                <div class="">
+                    <div class="record-ips">
+                        <div class="record-ips-item">
+                            <span class="copy-btn"></span>
+                            <div class="record-item-title">
+                                <p>资源：1</p>
+                                <p>更新时间：2020年12月31日  15:30:06</p>
+                            </div>
+                            <div class="record-item-content">
+                                <p class="record-item-label">接入服务号：</p>
+                                <p class="record-item-info copy-text">5199AED15FCB45729FF2D4133417AEBC</p>
+                                <p class="record-item-label">IP地址段：</p>
+                                <p class="record-item-info">182.43.82.210~182.43.82.210</p>
+                                <p class="record-item-label">资源有效期：</p>
+                                <p class="record-item-info">2020-09-14 06:18:49~2023-09-20 06:18:49 </p>
+                                <p class="record-item-label">资源状态：</p>
+                                <p class="record-item-info">有效 </p>
+                            </div>
+                        </div>
+                        <div class="record-ips-item">
+                            <span class="copy-btn"></span>
+                            <div class="record-item-title">
+                                <p>资源：2</p>
+                                <p>更新时间：2020年12月31日  15:30:06</p>
+                            </div>
+                            <div class="record-item-content">
+                                <p class="record-item-label">接入服务号：</p>
+                                <p class="record-item-info copy-text">5199AED15FCB45729FF2D4133417AEBC</p>
+                                <p class="record-item-label">IP地址段：</p>
+                                <p class="record-item-info">182.43.82.210~182.43.82.210</p>
+                                <p class="record-item-label">资源有效期：</p>
+                                <p class="record-item-info">2020-09-14 06:18:49~2023-09-20 06:18:49 </p>
+                                <p class="record-item-label">资源状态：</p>
+                                <p class="record-item-info">有效 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 无内容 -->
+                <div class="d_none">
+                    <div class="own-record-empty">
+                        <img src="./img/empty.png" alt="">
+                        <p>您没有任何备案信息</p>
+                    </div>
+                </div>
+                
+           </div>
+       </main>
+       <!-- 底部 -->
+       <footer>
+            <div class="footer-wrap">
+                <div class="tab-item-box icon-solution">
+                    <a href="./record_own.html">我的已备案</a>
+                </div>
+                <div class="tab-item-box icon-file-add">
+                    <a href="./record_order.html">在途备案订单</a>
+                </div>
+                <div class="tab-item-box icon-user active">
+                    <a href="./record_ip.html">我的接入IP资源</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
+
+    <!-- 引入组件库 -->
+    <script src="./plugins/vuebiaodan/js/citys.js"></script>
+    <script src="./plugins/vuebiaodan/js/vue.min.2.5.13.js"></script>
+    <script src="./plugins/vuebiaodan/js/mint-ui.js"></script>
+    <script src="./plugins/vuebiaodan/js/vue.index.js"></script>
+</body>
+</html>

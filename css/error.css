@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+a,
+button,
+input {
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0); }
+
+a {
+  color: #4A90E2;
+  text-decoration: none; }
+
+html {
+  font-size: 1vw; }
+
+body {
+  background: #F6F7FB;
+  min-height: 100vh; }
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 12rem;
+  padding: 2.6666666667rem;
+  color: #fff;
+  background: #4A90E2;
+  display: flex;
+  justify-content: center; }
+  .header .back {
+    padding-left: 4.5333333333rem;
+    position: absolute;
+    left: 2.6666666667rem;
+    top: 2.6666666667rem;
+    height: 6rem;
+    line-height: 6rem;
+    font-size: 4.2666666667rem; }
+    .header .back span {
+      font-weight: 700;
+      font-size: 3.4666666667rem;
+      position: absolute;
+      display: block;
+      width: 4.5333333333rem;
+      height: 6rem;
+      line-height: 6rem; }
+      .header .back span::before {
+        position: absolute;
+        left: -4.5333333333rem;
+        top: 0;
+        content: "\e605";
+        font-family: 'iconfont' !important;
+        color: #FFFFFF;
+        transform: rotate(-180deg); }
+  .header .title {
+    font-size: 4.9333333333rem;
+    text-align: center;
+    font-weight: 500; }
+
+.body .error-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36.5333333333rem 22.5333333333rem; }
+  .body .error-cell .error-img {
+    width: 25.8666666667rem;
+    height: 23.3333333333rem;
+    margin-bottom: 8rem; }
+  .body .error-cell .error-text {
+    font-size: 4.5333333333rem;
+    color: #9b9b9b;
+    font-weight: 500;
+    margin-bottom: 8rem;
+    text-align: center; }
+  .body .error-cell .error-subText {
+    font-size: 4rem;
+    color: #9b9b9b; }
+  .body .error-cell .error-back {
+    font-size: 4rem;
+    color: #9b9b9b;
+    margin-top: 9.3333333333rem; }
+.body .logo-cell {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 17.6rem; }
+  .body .logo-cell .logo-text {
+    font-size: 3.2rem;
+    color: #ccc;
+    font-weight: 500; }
+
+/*# sourceMappingURL=error.css.map */

@@ -1,0 +1,100 @@
+{
+  "id": "2187414",
+  "name": "智能访客zhuan'xiang",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "585068",
+      "name": "复制文件",
+      "font_class": "icon02",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "6229721",
+      "name": "叉号",
+      "font_class": "chahao1",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "5184447",
+      "name": "加号",
+      "font_class": "jiahao",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "18094378",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "479193",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "485741",
+      "name": "叉号",
+      "font_class": "chahao",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "608351",
+      "name": "箭头",
+      "font_class": "jiantouarrow486",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "1166059",
+      "name": "箭头左",
+      "font_class": "iconfontzhizuobiaozhun023126",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "1440881",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "10515595",
+      "name": "左箭头",
+      "font_class": "zuojiantou-copy",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "18094383",
+      "name": "file-add",
+      "font_class": "file-add",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "18094388",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "18094392",
+      "name": "solution",
+      "font_class": "solution",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    }
+  ]
+}

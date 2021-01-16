@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>备案-主体信息</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/main-infomation.css">
+    <link rel="stylesheet" href="./icon/iconfont.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2325415_81i0lfjh1pi.css">
+    <script src="./js/rem.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./plugins/vuebiaodan/css/mint-ui.css">
+</head>
+<body>
+    <div class="wrap vueBox">
+        <!-- header -->
+        <div class="header">
+            <div class="back">
+                <i class="iconfont iconico-left-arrow"></i>
+                <span>返回</span>
+            </div>
+            <div class="title">
+                网站备案
+            </div>
+            <div class="note">注意事项</div>
+        </div>
+        <!-- process -->
+        <div class="process">
+            <ul>
+                <li class="active">
+                    <a href="javascript:;">
+                        <span class="step">1</span>
+                    </a>
+                    <span class="title">主体信息</span>
+                </li>
+                <li class="un-active">
+                    <a href="javascript:;">
+                        <span class="step">2</span>
+                    </a>
+                    <span class="title">网站信息</span>
+                </li>
+                <li class="un-active">
+                    <a href="javascript:;">
+                        <span class="step">3</span>
+                    </a>
+                    <span class="title">补充材料</span>
+                </li>
+                <li class="un-active">
+                    <a href="javascript:;">
+                        <span class="step">4</span>
+                    </a>
+                    <span class="title">审核</span>
+                </li>
+            </ul>
+        </div>
+        <!-- record-info -->
+        <div class="record-info">
+            <dl>
+                <dt>备案类型是: <span class="record-type">首次备案</span></dt>
+                <dd>
+                    <div class="info-item unit-info">
+                        <div class="tag" @click="triggleForUnit">
+                            <span>主办单位信息</span>
+                            <i class="iconfont iconarrow-solid-down" v-if="!expandForUnit"></i>
+                            <i class="iconfont iconarrow-up" v-else></i>
+                        </div>
+                        <!-- main-card -->
+                        <div class="main-card" v-show="expandForUnit">
+                            <div class="main-card-title">
+                                <p class="card-items-tip">注：<span class="request">*</span> 是必填项</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop" @click="showCitys">
+                                    <span class="card-items-label">地区</span>
+                                    <input :value="city_name" class="card-items-input" placeholder="请选择" type="text" readonly />
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">注意：请选择主办单位通讯地址所在的省市区，且与证件所在省/市相匹配。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop" @click="showBankName">
+                                    <span class="card-items-label">主办者性质</span>
+                                    <input :value="bank_name" type="text" class="card-items-input" placeholder="请选择" readonly />
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">注意：请按照主办单位有效证件中实际主办单位性质选择。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop" @click="showCardName">
+                                    <span class="card-items-label">证件类型</span>
+                                    <input :value="card_name" type="text" class="card-items-input" placeholder="请选择" readonly />
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">注意：1.企业需选择工商营业执照；2.民办企业单位选择组织机构代码或民办非企业登记证；</p>
+                            </div>
+                            <div class="card-items request" v-show="isBusiness">
+                                <div class="card-items-top">
+                                    <span class="card-items-label">请上传营业执照（个人或企业）</span>
+                                </div>
+                                <div class="card-items-middle">
+                                    <div class="middle-left">
+                                        <div class="after-upload" v-show="imgExist">
+                                            <span class="icon-edit iconfont icon-bianji" @click="changeImg"></span>
+                                            <div class="mask-img"></div>
+                                            <img :src="imgHref" alt="">
+                                        </div>
+                                        <div class="before-upload" v-show="!imgExist">
+                                            <input type="file" accept="image/*" @change="uploadImg" />
+                                        </div>
+                                    </div>
+                                    <div class="middle-right">
+                                        <span>如图实例</span>
+                                        <img src="./img/card.png" alt="" />
+                                    </div>
+                                </div>
+                                <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                            </div>
+                            <div class="card-items request" v-show="isPersonal">
+                                <div class="card-items-top">
+                                     <span class="card-items-label">请上传居民身份证头像面</span>
+                                </div>
+                                <div class="card-items-middle">
+                                    <div class="middle-left">
+                                        <div class="after-upload" v-show="imgExistFront">
+                                            <span class="icon-edit iconfont icon-bianji" @click="changeImgFront"></span>
+                                            <div class="mask-img"></div>
+                                            <img :src="imgHrefFront" alt="">
+                                        </div>
+        
+                                        <div class="before-upload" v-show="!imgExistFront">
+                                            <input type="file" accept="image/*" @change="uploadImgFront" />
+                                        </div>
+                                    </div>
+                                    <div class="middle-right">
+                                        <span>如图实例</span>
+                                        <img src="./img/ip-2.png" alt="" />
+                                    </div>
+                                </div>
+                                <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                            </div>
+                            <div class="card-items request" v-show="isPersonal">
+                                <div class="card-items-top">
+                                    <span class="card-items-label">请上传居民身份证国徽面</span>
+                                </div>
+                                <div class="card-items-middle">
+                                    <div class="middle-left">
+                                        <div class="after-upload" v-show="imgExistBack">
+                                            <span class="icon-edit iconfont icon-bianji" @click="changeImgBack"></span>
+                                            <div class="mask-img"></div>
+                                            <img :src="imgHrefBack" alt="">
+                                        </div>
+                                        <div class="before-upload" v-show="!imgExistBack">
+                                            <input type="file" accept="image/*" @change="uploadImgBack" />
+                                        </div>
+                                    </div>
+                                    <div class="middle-right">
+                                        <span>如图实例</span>
+                                        <img src="./img/ip-1.png" alt="" />
+                                    </div>
+                                </div>
+                                <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">证件号码</span>
+                                    <div class="after-discern d_none">
+                                        <span>35862413366549956</span>
+                                    </div>
+                                    <div class="before-discern">
+                                        <span>根据上传的证件自动识别</span>
+                                        <input type="file" accept="image/*"  class="card-items-input" placeholder="根据上传的证件自动识别" />
+                                    </div>
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">注意：证件类型为身份证，请填写18位正确的身份证号。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">主办单位或主办人名称</span>
+                                    <input type="text"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请按照单位优先证件名称填写；如个人备案请写个人姓名。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">证件住址</span>
+                                    <input type="text"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">证件住所请与个人身份有效证件地址保持一致。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop" @click="showAdress">
+                                    <span class="card-items-label">通信地址</span>
+                                    <input :value="adress_name" class="card-items-input" placeholder="请选择" type="text" readonly />
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">1.需输入真实准确的通讯地址，精确到门牌号。如无法精确到门牌号，请在备注中说明；<br> 2.地址中不能包含特殊字符，正确格式如下：xx街道/路xx大厦门牌号，请在备注中说明。</p>
+                            </div>
+                            <div class="card-items">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">投资人或主管单位</span>
+                                    <input type="text"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请按照单位有效证件名称填写；如个人备案请写个人姓名。</p>
+                            </div>
+                       </div>
+                    </div>
+                    <div class="info-item director-info">
+                        <div class="tag" @click="triggleForDirector">
+                            <span>主办单位负责人信息</span>
+                            <i class="iconfont iconarrow-solid-down" v-if="!expandForDirector"></i>
+                            <i class="iconfont iconarrow-up" v-else></i>
+                        </div>
+                        <!-- main-card -->
+                        <div class="main-card" v-show="expandForDirector">
+                            <div class="card-items border-top" :class="{'request': !isPersonal}">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">负责人姓名</span>
+                                    <input type="text"  class="card-items-input input-left" placeholder="请输入" v-if="!isPersonal">
+                                    <span class="input-readonly" v-else>李木木</span>
+                                </div>
+                                <p class="card-items-tip">企业性质必须填写单位法人信息；如个人备案请写个人姓名。</p>
+                            </div>
+                            <div class="card-items request" v-show="!isPersonal">
+                                <div class="card-items-top card-drop" @click="showIdType">
+                                    <span class="card-items-label">证件类型</span>
+                                    <input :value="idType_name" class="card-items-input" placeholder="请选择" type="text" readonly />
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">注意：请选择主办单位通讯地址所在的省市区，且与证件所在省/市相匹配。</p>
+                            </div>
+                            <div class="card-items" v-show="isPersonal">
+                                <div class="card-items-top flex-start">
+                                    <span class="card-items-label">请上传居民身份证头像面</span>
+                                    <img src="./img/ip-2@2x.png" alt="" class="idCard">
+                                </div>
+                            </div>
+                            <div class="card-items border-top" v-show="isPersonal">
+                                <div class="card-items-top flex-start">
+                                    <span class="card-items-label">请上传居民身份证国徽面</span>
+                                    <img src="./img/ip-1@2x.png" alt="" class="idCard">
+                                </div>
+                            </div>
+                            <div class="card-items border-top request" v-show="isPersonal">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">真实性核验</span>
+                                    <span class="done-ver d_none">已核验</span>
+                                    <span class="no-ver">未核验</span>
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                            </div>
+                            <div class="card-items request" v-show="isIdCard">
+                                <div class="card-items-top">
+                                     <span class="card-items-label">请上传居民身份证头像面</span>
+                                </div>
+                                <div class="card-items-middle">
+                                    <div class="middle-left">
+                                        <div class="after-upload" v-show="imgExistFront">
+                                            <span class="icon-edit iconfont icon-bianji" @click="changeImgFront"></span>
+                                            <div class="mask-img"></div>
+                                            <img :src="imgHrefFront" alt="">
+                                        </div>
+        
+                                        <div class="before-upload" v-show="!imgExistFront">
+                                            <input type="file" accept="image/*" @change="uploadImgFront" />
+                                        </div>
+                                    </div>
+                                    <div class="middle-right">
+                                        <span>如图实例</span>
+                                        <img src="./img/ip-2.png" alt="" />
+                                    </div>
+                                </div>
+                                <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                            </div>
+                            <div class="card-items request" v-show="isIdCard">
+                                <div class="card-items-top">
+                                    <span class="card-items-label">请上传居民身份证国徽面</span>
+                                </div>
+                                <div class="card-items-middle">
+                                    <div class="middle-left">
+                                        <div class="after-upload" v-show="imgExistBack">
+                                            <span class="icon-edit iconfont icon-bianji" @click="changeImgBack"></span>
+                                            <div class="mask-img"></div>
+                                            <img :src="imgHrefBack" alt="">
+                                        </div>
+                                        <div class="before-upload" v-show="!imgExistBack">
+                                            <input type="file" accept="image/*" @change="uploadImgBack" />
+                                        </div>
+                                    </div>
+                                    <div class="middle-right">
+                                        <span>如图实例</span>
+                                        <img src="./img/ip-1.png" alt="" />
+                                    </div>
+                                </div>
+                                <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                            </div>
+                            <div class="card-items request" v-show="isLicense">
+                                <div class="card-items-top">
+                                    <span class="card-items-label">请上传营业执照（个人或企业）</span>
+                                </div>
+                                <div class="card-items-middle">
+                                    <div class="middle-left">
+                                        <div class="after-upload" v-show="imgExist">
+                                            <span class="icon-edit iconfont icon-bianji" @click="changeImg"></span>
+                                            <div class="mask-img"></div>
+                                            <img :src="imgHref" alt="">
+                                        </div>
+                                        <div class="before-upload" v-show="!imgExist">
+                                            <input type="file" accept="image/*" @change="uploadImg" />
+                                        </div>
+                                    </div>
+                                    <div class="middle-right">
+                                        <span>如图实例</span>
+                                        <img src="./img/card.png" alt="" />
+                                    </div>
+                                </div>
+                                <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                            </div>
+                            <div class="card-items request" :class="{'border-top':isPersonal,'border-bottom':isPersonal}">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">证件号码</span>
+                                    <div class="after-discern" v-if="isPersonal">
+                                        <span>222222455654569898</span>
+                                    </div>
+                                    <div class="before-discern" v-else>
+                                        <span>根据上传的证件自动识别</span>
+                                        <input type="file" accept="image/*"  class="card-items-input" placeholder="根据上传的证件自动识别" />
+                                    </div>
+                                    <i class="iconfont iconRightArrowSoild" v-show="!isPersonal"></i>
+                                </div>
+                                <p class="card-items-tip" v-show="!isPersonal">注意：证件类型为身份证，请填写18位正确的身份证号。</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">电子邮箱</span>
+                                    <input type="text"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请输入您经常使用的电子邮箱</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">手机号</span>
+                                    <input type="tel"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请输入正确的11位手机号码</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">手机验证</span>
+                                    <input type="text" maxlength="6" class="card-items-input input-left" placeholder="请输入">
+                                    <button type="button" class="getYzm" @click="getYzm" :disabled="yzmDisabled">{{yzmCtx}}</button>
+                                </div>
+                                <p class="card-items-tip">请输入正确的11位手机号码</p>
+                            </div>
+                            <div class="card-items request">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">应急电话（手机）</span>
+                                    <input type="tel"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请按照单位优先证件名称填写；如个人备案请写个人姓名。</p>
+                            </div>
+                            <div class="card-items">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">其他联系方式</span>
+                                    <input type="text"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请输入正确验证码</p>
+                            </div>
+                            <div class="card-items">
+                                <div class="card-items-top card-drop" @click="showMsgType">
+                                    <span class="card-items-label">即时通讯类型</span>
+                                    <input :value="msgType_name" class="card-items-input" placeholder="请选择" type="text" readonly />
+                                    <i class="iconfont iconRightArrowSoild"></i>
+                                </div>
+                                <p class="card-items-tip">请输入正确验证码</p>
+                            </div>
+                            <div class="card-items">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">即时通讯账号</span>
+                                    <input type="number"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">请输入正确的即时通讯账号</p>
+                            </div>
+                            <div class="card-items">
+                                <div class="card-items-top card-drop">
+                                    <span class="card-items-label">备注</span>
+                                    <input type="number"  class="card-items-input input-left" placeholder="请输入">
+                                </div>
+                                <p class="card-items-tip">特殊情况，请在备注中说明。<br> <span class="errorMsg">错误信息</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <button type="button" class="save">保存</button>
+            <button type="button" class="next">下一步</button>
+        </div>
+        <aside>
+            <!-- 主办者性质 -->
+            <mt-popup v-model="bankVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectBank(0)">取消</li>
+					<li @click="selectBank(1)">确认</li>
+				</ul>
+				<mt-picker :slots="banks_list" @change="bankChange" value-key="name"> </mt-picker>
+            </mt-popup>
+             <!-- 证件类型 -->
+             <mt-popup v-model="cardVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectCard(0)">取消</li>
+					<li @click="selectCard(1)">确认</li>
+				</ul>
+				<mt-picker :slots="cards_list" @change="cardChange" value-key="name"> </mt-picker>
+			</mt-popup>
+            <!-- 地区选择 -->
+			<mt-popup v-model="cityVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectCity(0)">取消</li>
+					<li @click="selectCity(1)">确认</li>
+				</ul>
+				<mt-picker :slots="citys_list" @change="cityChange" value-key="name"> </mt-picker>
+            </mt-popup>
+             <!-- 通信地址 -->
+			<mt-popup v-model="adressVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectAdress(0)">取消</li>
+					<li @click="selectAdress(1)">确认</li>
+				</ul>
+				<mt-picker :slots="adress_list" @change="adressChange" value-key="name"> </mt-picker>
+            </mt-popup>
+            <!-- 身份类型 -->
+            <mt-popup v-model="idTypeVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectIdType(0)">取消</li>
+					<li @click="selectIdType(1)">确认</li>
+				</ul>
+				<mt-picker :slots="idType_list" @change="idTypeChange" value-key="name"> </mt-picker>
+            </mt-popup>
+            <!-- 即时通讯类型 -->
+            <mt-popup v-model="msgTypeVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectMsgType(0)">取消</li>
+					<li @click="selectMsgType(1)">确认</li>
+				</ul>
+				<mt-picker :slots="msgType_list" @change="msgTypeChange" value-key="name"> </mt-picker>
+            </mt-popup>
+       </aside>
+    </div>
+    <!-- 引入组件库 -->
+    <script src="./plugins/vuebiaodan/js/citys.js"></script>
+    <script src="./plugins/vuebiaodan/js/vue.min.2.5.13.js"></script>
+    <script src="./plugins/vuebiaodan/js/mint-ui.js"></script>
+    <script src="./plugins/vuebiaodan/js/vue.index.js"></script>
+</body>
+</html>

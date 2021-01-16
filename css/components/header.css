@@ -1,0 +1,26 @@
+.header {
+  height: 0.88rem;
+  background: linear-gradient(360deg, #2C2D31 0%, #101013 100%);
+  font-size: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 0 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100; }
+  .header .back i {
+    font-size: 0.32rem; }
+  .header .back span {
+    font-size: 0.32rem;
+    margin-left: 0.05rem; }
+  .header .title {
+    font-size: 0.37rem; }
+  .header .note {
+    font-size: 0.32rem; }
+
+/*# sourceMappingURL=header.css.map */

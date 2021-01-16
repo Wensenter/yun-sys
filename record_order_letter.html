@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>承诺书</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="box-container">
+        <!-- 头部 -->
+        <header>
+            <div class="header-wrap">
+                <a href="javascript:;" class="back-btn"><span class="back-head iconfont icon-zuojiantou-copy"></span>返回</a>
+                <h3>网站备案</h3>
+                <a href="javascript:;" class="attention-btn">注意事项</a>
+            </div>
+        </header>
+       <!-- 主体 -->
+       <main>
+           <div class="main-wrap record-order-letter">
+               <h3>《互联网信息服务备案承诺书》</h3>
+               <p>本人通过中国电信股份有限公司云计算分公司向通信管理局申请互联网信息服务备案，并作出如下承诺：</p>
+               <p>一、本人知晓并自觉遵守互联网信息服务相关法律法规和行政管理规定，提交的证件信息和相关材料真实、合法、有效。</p>
+               <p>二、互联网信息服务备案信息如发生变化，主办者将及时在“工业和信息化部ICP/IP地址/域名信息管理系统”中进行备案信息变更。如未履行相关义务，本人自愿承担相应的法律责任。</p>
+               <div class="btn-groups-letter">
+                   <a href="./record_order_index.html" class="active-btn d_none">已阅读，下一步</a>
+                   <a href="javascript:;" class="forbidden-btn"><span class="num-sapn">10</span>s，确认阅读完毕</a>
+               </div>
+           </div>
+       </main>
+       <!-- 底部 -->
+       <!-- <footer>
+            <div class="footer-wrap">
+                <div class="tab-item-box icon-solution active">
+                    <a href="./record_own.html">我的已备案</a>
+                </div>
+                <div class="tab-item-box icon-file-add">
+                    <a href="./record_order.html">在途备案订单</a>
+                </div>
+                <div class="tab-item-box icon-user">
+                    <a href="./record_ip.html">我的接入IP资源</a>
+                </div>
+            </div>
+        </footer> -->
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        window.addEventListener("load", function () { 
+            let i = 10
+            let timer = null
+            timer = setInterval(function() {
+                i--;
+                if(i > 0) {
+                    $('.num-sapn').text(i)
+                } else {
+                    $('.active-btn').removeClass('d_none')
+                    $('.forbidden-btn').addClass('d_none')
+                    clearInterval(timer)
+                }
+                
+            }, 1000)
+        });
+    </script>
+</body>
+</html>

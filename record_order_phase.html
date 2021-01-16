@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>备案主体信息填写</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./plugins/vuebiaodan/css/mint-ui.css">
+    <!-- <link rel="stylesheet" href="./plugins/vuebiaodan/css/common.css"> -->
+    <!-- <link rel="stylesheet" href="./plugins/vuebiaodan/css/index.css"> -->
+</head>
+<body>
+    <div class="box-container vueBox">
+        <!-- 头部 -->
+        <header>
+            <div class="header-wrap">
+                <a href="javascript:;" class="back-btn" @click="backHistory"><span class="back-head iconfont icon-zuojiantou-copy"></span>返回</a>
+                <h3>网站备案</h3>
+                <a href="javascript:;" class="attention-btn">注意事项</a>
+            </div>
+        </header>
+       <!-- 主体 -->
+       <main>
+           <div class="main-wrap record-order-phase">
+               <div class="main-card">
+                    <div class="main-card-title">
+                        <h3>主体信息</h3>
+                        <p class="card-items-tip">注：是必填项</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top card-drop" @click="showCitys">
+                            <span class="card-items-label">地区：</span>
+                            <input :value="city_name" class="card-items-input" placeholder="请选择" type="text" readonly />
+                        </div>
+                        <p class="card-items-tip">注意：请选择主办单位通讯地址所在的省市区，且与证件所在省/市相匹配。</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top card-drop" @click="showBankName">
+                             <span class="card-items-label">主办者性质</span>
+                             <input :value="bank_name" type="text" class="card-items-input" placeholder="请选择" readonly />
+                        </div>
+                        <p class="card-items-tip">注意：请按照主办单位有效证件中实际主办单位性质选择。</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top card-drop" @click="showCardName">
+                             <span class="card-items-label">证件类型</span>
+                             <input :value="card_name" type="text" class="card-items-input" placeholder="请选择" readonly />
+                        </div>
+                        <p class="card-items-tip">注意：1.企业需选择工商营业执照；2.民办企业单位选择组织机构代码或民办非企业登记证；</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top">
+                            <span class="card-items-label">请上传营业执照（个人或企业）</span>
+                        </div>
+                        <div class="card-items-middle">
+                            <div class="middle-left">
+                                <div class="after-upload" v-show="imgExist">
+                                    <span class="icon-edit iconfont icon-bianji" @click="changeImg"></span>
+                                    <div class="mask-img"></div>
+                                    <img :src="imgHref" alt="">
+                                </div>
+                                <div class="before-upload" v-show="!imgExist">
+                                    <input type="file" accept="image/*" @change="uploadImg" />
+                                </div>
+                            </div>
+                            <div class="middle-right">
+                                <span>如图实例</span>
+                                <img src="./img/card.png" alt="" />
+                            </div>
+                        </div>
+                        <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top">
+                             <span class="card-items-label">请上传居民身份证头像面</span>
+                        </div>
+                        <div class="card-items-middle">
+                            <div class="middle-left">
+                                <div class="after-upload" v-show="imgExistFront">
+                                    <span class="icon-edit iconfont icon-bianji" @click="changeImgFront"></span>
+                                    <div class="mask-img"></div>
+                                    <img :src="imgHrefFront" alt="">
+                                </div>
+
+                                <div class="before-upload" v-show="!imgExistFront">
+                                    <input type="file" accept="image/*" @change="uploadImgFront" />
+                                </div>
+                            </div>
+                            <div class="middle-right">
+                                <span>如图实例</span>
+                                <img src="./img/ip-2.png" alt="" />
+                            </div>
+                        </div>
+                        <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top">
+                            <span class="card-items-label">请上传居民身份证国徽面</span>
+                        </div>
+                        <div class="card-items-middle">
+                            <div class="middle-left">
+                                <div class="after-upload" v-show="imgExistBack">
+                                    <span class="icon-edit iconfont icon-bianji" @click="changeImgBack"></span>
+                                    <div class="mask-img"></div>
+                                    <img :src="imgHrefBack" alt="">
+                                </div>
+                                <div class="before-upload" v-show="!imgExistBack">
+                                    <input type="file" accept="image/*" @change="uploadImgBack" />
+                                </div>
+                            </div>
+                            <div class="middle-right">
+                                <span>如图实例</span>
+                                <img src="./img/ip-1.png" alt="" />
+                            </div>
+                        </div>
+                        <p class="card-items-tip">注意：请有效证件原件扫描件或清晰拍照件，确保证件边角完整，内容清晰。</p>
+                    </div>
+                    <div class="card-items">
+                        <div class="card-items-top">
+                            <span class="card-items-label">证件号码</span>
+                            <input type="text" class="card-items-input" placeholder="根据上传的证件自动识别" />
+                        </div>
+                        <p class="card-items-tip">注意：证件类型为身份证，请填写18位正确的身份证号。</p>
+                    </div>
+                   <div class="card-items">
+                       <div class="card-items-top">
+                            <span class="card-items-label">域名</span>
+                            <input type="text" class="card-items-input" placeholder="请填写" />
+                       </div>
+                       <p class="card-items-tip">1.请填写顶级域名，如：123456789.25</p>
+                   </div>
+               </div>
+           </div>
+           <div class="btn-groups">
+                <a href="javascript:;" class="check-btns" @click="showModalName">验证备案类型</a>
+            </div>
+       </main>
+       <aside>
+            <!-- 提示框 -->
+           <div class="modal-wrap" v-if="modalVisible">
+                <div class="mask-type"></div>
+                <div class="modal-box">
+                    <span class="icon-close iconfont icon-chahao1" @click="closeModalName"></span>
+                    <p class="modal-title">提示性语言标题</p>
+                    <p class="modal-content">提示性语言实际内容详细表述</p>
+                    <div class="actions-btns">
+                        <a href="javascript:;" class="cancel-btn" @click="closeModalName">取消</a>
+                        <a href="javascript:;" class="sure-btn" @click="changeModalName">确定</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主办者性质 -->
+            <mt-popup v-model="bankVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectBank(0)">取消</li>
+					<li @click="selectBank(1)">确认</li>
+				</ul>
+				<mt-picker :slots="banks_list" @change="bankChange" value-key="name"> </mt-picker>
+            </mt-popup>
+             <!-- 证件类型 -->
+             <mt-popup v-model="cardVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectCard(0)">取消</li>
+					<li @click="selectCard(1)">确认</li>
+				</ul>
+				<mt-picker :slots="cards_list" @change="cardChange" value-key="name"> </mt-picker>
+			</mt-popup>
+            <!-- 地区选择 -->
+			<mt-popup v-model="cityVisible" position="bottom">
+				<ul class="mint-popup-head">
+					<li @click="selectCity(0)">取消</li>
+					<li @click="selectCity(1)">确认</li>
+				</ul>
+				<mt-picker :slots="citys_list" @change="cityChange" value-key="name"> </mt-picker>
+			</mt-popup>
+       </aside>
+    </div>
+    <!-- <script src="./js/jquery.min.js"></script>
+    <script src="./js/index.js"></script> -->
+    
+    <!-- 引入组件库 -->
+    <script src="./plugins/vuebiaodan/js/citys.js"></script>
+    <script src="./plugins/vuebiaodan/js/vue.min.2.5.13.js"></script>
+    <script src="./plugins/vuebiaodan/js/mint-ui.js"></script>
+    <script src="./plugins/vuebiaodan/js/vue.index.js"></script>
+    <!-- <script src="./plugins/vuebiaodan/js/resize.js"></script>
+</body>
+</html>
