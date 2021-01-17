@@ -19,7 +19,12 @@
   align-items: flex-start !important; }
 
 .errorMsg {
-  color: #FF0500; }
+  color: #FF0500;
+  display: inline-block;
+  margin-top: 0.19rem; }
+
+.l-btn {
+  width: 6.59rem !important; }
 
 /* process */
 .process {
@@ -72,13 +77,16 @@
         display: inline-block;
         margin-top: 0.19rem;
         font-size: 0.24rem;
-        white-space: nowrap; }
+        white-space: nowrap;
+        color: #9B9B9B; }
       .process ul li.active a {
         background: #FDD7BF; }
         .process ul li.active a::before {
           background: #FE822E; }
         .process ul li.active a::after {
           border-color: #FE822E; }
+      .process ul li.active .title {
+        color: #000; }
       .process ul li.un-active a {
         background: #F0F0F0; }
         .process ul li.un-active a::before {
@@ -119,10 +127,9 @@
       margin-left: 0; }
       .record-info dl dd .info-item {
         border-top: 0.01rem solid #E5E5E5;
-        border-bottom: 0.01rem solid #E5E5E5;
         box-sizing: border-box; }
         .record-info dl dd .info-item:last-child {
-          border-top: 0; }
+          border-bottom: 0.01rem solid #E5E5E5; }
         .record-info dl dd .info-item .tag {
           padding: 0 0.45rem;
           height: 0.85rem;
@@ -168,6 +175,8 @@
     padding: 0.24rem 0.45rem; }
     .main-card .card-items-top.card-drop .card-items-label {
       width: 1.6rem; }
+    .main-card .card-items-top.crad-link .card-items-label {
+      width: 1.8rem; }
     .main-card .card-items-top .card-items-label {
       font-size: 0.28rem;
       color: #000; }
@@ -301,6 +310,70 @@
       height: 0.79rem;
       display: block;
       margin-top: 0.07rem; }
+  .main-card .tag-card {
+    margin: 0.45rem 0.24rem;
+    background: #fff;
+    box-sizing: border-box; }
+    .main-card .tag-card .tag-header ul {
+      height: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .main-card .tag-card .tag-header ul li {
+        font-size: 0.28rem;
+        color: #000;
+        height: 0.63rem;
+        line-height: 0.63rem;
+        text-align: center;
+        flex: 1; }
+        .main-card .tag-card .tag-header ul li.active {
+          background: #FFF4ED;
+          color: #E09039;
+          border: 0.02rem solid #E09039;
+          border-bottom: 0;
+          z-index: 2; }
+    .main-card .tag-card .tag-ctx {
+      position: relative;
+      margin-top: -0.02rem;
+      border: 0.02rem solid #E09039;
+      padding: 0.5rem; }
+      .main-card .tag-card .tag-ctx .link-list {
+        margin: 0;
+        padding: 0; }
+        .main-card .tag-card .tag-ctx .link-list .radio-items {
+          margin-bottom: 0.48rem;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start; }
+          .main-card .tag-card .tag-ctx .link-list .radio-items:last-child {
+            margin-bottom: 0; }
+          .main-card .tag-card .tag-ctx .link-list .radio-items .radio {
+            position: relative;
+            width: 0.3rem;
+            height: 0.3rem;
+            margin-right: 0.27rem;
+            border: 0.03rem solid #9B9B9B;
+            border-radius: 50%; }
+            .main-card .tag-card .tag-ctx .link-list .radio-items .radio.active {
+              border-color: #E09039; }
+              .main-card .tag-card .tag-ctx .link-list .radio-items .radio.active::after {
+                display: block;
+                content: '';
+                width: 0.15rem;
+                height: 0.15rem;
+                background: #E09039;
+                border-radius: 50%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%); }
+          .main-card .tag-card .tag-ctx .link-list .radio-items .radio-text {
+            font-size: 0.28rem;
+            color: #000;
+            line-height: 0.4rem; }
 
 /* footer */
 .footer {

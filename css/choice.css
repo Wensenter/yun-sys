@@ -1,0 +1,56 @@
+.header {
+  height: 0.88rem;
+  background: linear-gradient(360deg, #2C2D31 0%, #101013 100%);
+  font-size: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 0 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100; }
+  .header .back i {
+    font-size: 0.32rem; }
+  .header .back span {
+    font-size: 0.32rem;
+    margin-left: 0.05rem; }
+  .header .title {
+    font-size: 0.37rem; }
+  .header .note {
+    font-size: 0.32rem; }
+
+.wrap {
+  min-height: 100vh;
+  overflow: hidden;
+  padding-top: 0.88rem;
+  box-sizing: border-box;
+  background: #fff; }
+
+.sure {
+  font-size: 0.32rem; }
+
+/* serviceList */
+.service-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0.5rem 0.47rem; }
+  .service-list .service-item {
+    background: #fff;
+    width: 2.08rem;
+    height: 0.63rem;
+    text-align: center;
+    line-height: 0.63rem;
+    font-size: 0.28rem;
+    color: #000;
+    border: 0.02rem solid #E5E5E5;
+    margin-bottom: 0.39rem; }
+  .service-list .active {
+    border-color: #E09039;
+    background: #FFF4ED; }
+
+/*# sourceMappingURL=choice.css.map */

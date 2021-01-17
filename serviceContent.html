@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>备案-网站服务内容</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/choice.css">
+    <link rel="stylesheet" href="./icon/iconfont.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2325415_81i0lfjh1pi.css">
+    <script src="./js/rem.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./plugins/vuebiaodan/css/mint-ui.css">
+</head>
+<body>
+    <div class="wrap vueBox">
+        <!-- header -->
+        <div class="header">
+            <div class="back" @click="toStepTwo">
+                <i class="iconfont iconico-left-arrow"></i>
+                <span>取消</span>
+            </div>
+            <div class="title">
+                网站服务内容
+            </div>
+            <div class="sure"  @click="toStepTwo">确定</div>
+        </div>
+        <!-- serviceList -->
+        <div class="service-list">
+            <div class="service-item" :class="{'active':item.active}" v-for="(item,index) in serviceList" :key="index" @click="choiceSerivce(index)">
+                {{item.name}}
+            </div>
+        </div>
+    </div>
+    <!-- 引入组件库 -->
+    <script src="./plugins/vuebiaodan/js/vue.min.2.5.13.js"></script>
+    <script src="./js/vue.serviceContent.js"></script>
+</body>
+</html>
